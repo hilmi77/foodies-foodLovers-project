@@ -7,7 +7,13 @@ const MealItem = ({ title, slug, image, summary, creator }) => {
     <article className={classes.meal}>
       <header>
         <div className={classes.image}>
-          <Image src={image} alt={title} fill />
+          <Image
+            src={image}
+            alt={title}
+            fill
+            priority
+            sizes="(max-width: 600px) 100px, 200px"
+          />
         </div>
         <div className={classes.headerText}>
           <h2>{title}</h2>
