@@ -1,18 +1,35 @@
 import Link from "next/link";
 import React from "react";
+import classes from "./page.module.css";
+import Image from "next/image";
+import { getMealBySlug } from "@/lib/meals";
 
 const MealsDetailsPage = ({ params }) => {
+  const meal = getMealBySlug(params.mealSlug);
+
   return (
-    <main>
-      <h1>Meals Details Page</h1>
-      <p>params.mealSlug: {params.mealSlug}</p>
-      <p>
-        <Link href="/meals">All Meals</Link>
-      </p>
-      <p>
-        <Link href="/">HOME</Link>
-      </p>
-    </main>
+    <>
+      <header className={classes.header}>
+        <div className={classes.image}>
+          <Image src={meal.image} fill alt={meal.title} />
+        </div>
+        <div className={classes.headerText}>
+          <h1>{meal.title}</h1>
+          <p className={classes.creator}>
+            by <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a>
+          </p>
+          <p className={classes.summary}>{meal.summary}</p>
+        </div>
+      </header>
+      <main>
+        <p
+          className={classes.instructions}
+          dangerouslySetInnerHTML={{
+            __html: meal.instructions.replace(/\n/g, "<br>"),
+          }}
+        ></p>
+      </main>
+    </>
   );
 };
 
