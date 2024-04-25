@@ -3,9 +3,14 @@ import React from "react";
 import classes from "./page.module.css";
 import Image from "next/image";
 import { getMealBySlug } from "@/lib/meals";
+import { notFound } from "next/navigation";
 
 const MealsDetailsPage = ({ params }) => {
   const meal = getMealBySlug(params.mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
 
   return (
     <>
