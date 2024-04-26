@@ -12,7 +12,7 @@ const CommunityPage = () => {
       <header className={classes.header}>
         <h1>
           One shared passion:
-          <span className={classes.hightlight}> accordion Food</span>
+          <span className={classes.hightlight}> Accordion Food</span>
         </h1>
         <p>Join our community and share your favorite recipes!</p>
       </header>
